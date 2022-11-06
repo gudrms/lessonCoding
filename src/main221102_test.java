@@ -29,7 +29,7 @@ public class main221102_test {
 //
 //      2. 음식점을 차릴 건데, 포스기에서 사용하는 코딩을 설정해주세요. [1.볶음밥 2.자장면 3.탕수육[소`중`대 따로] 4.종료] 금액 본인이 설정.
 //2-1 : 2번을 누르면 볶음밥, 자장면, 탕수육을 선택할 수 있게 만든다.
-//2-2 : 그곳에서 탕수육을 누를 시.1.대[?원] 2.중[?원] 3.소[?원] 4.이전 메뉴로가 출력된다. 그리고 그곳에서 4번 이전메뉴를 선택할 시 다시 볶음밥 등을 선택할 수 있는 메뉴판이 나타난다.
+//2-2 : 그곳에서 탕수육을 누를 시.1.대[?원] 22.중[?원] 3.소[?원] 4.이전 메뉴로가 출력된다. 그리고 그곳에서 4번 이전메뉴를 선택할 시 다시 볶음밥 등을 선택할 수 있는 메뉴판이 나타난다.
 //      2-3 : 마찬가지로 종료버튼을 누르면 이전 메뉴로 빠져나가서 1.구구단 2.중국집 3.계산기 4.종료버튼이 뜨게 한다.
 //2-4 : 단, 메인메뉴로 빠져나가고, 다시 중국집으로 들어가게 됐을 때 이전에 중국집에서 산 금액이 +되어서 합산되게 하시오.
 //2-5 : 각 금액은 알아서 추가하시고, 각 메뉴마다 금액을 나타내시오.
@@ -90,26 +90,27 @@ public class main221102_test {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
 
+    int bok, jja, tangB, tangM,tangS;
+    System.out.println("볶음밥의 금액 : ");
+    bok = sc.nextInt();
+    System.out.println("자장면의 금액 : ");
+    jja = sc.nextInt();
+    System.out.println("탕수육의 대 금액 : ");
+    tangB = sc.nextInt();
+    System.out.println("탕수육의 중 금액 : ");
+    tangM = sc.nextInt();
+    System.out.println("탕수육의 소 금액 : ");
+    tangS = sc.nextInt();
+
 
     while (true) {
       System.out.println("1.구구단 2.음식점 3.계산기 4.종료");
       int num = sc.nextInt();
-
       if (num == 1) {
         gugu();
 
       } else if (num == 2) {
-        System.out.println("볶음밥의 금액 : ");
-        int bok = sc.nextInt();
-        System.out.println("자장면의 금액 : ");
-        int jja = sc.nextInt();
-        System.out.println("탕수육의 대 금액 : ");
-        int tangA = sc.nextInt();
-        System.out.println("탕수육의 중 금액 : ");
-        int tangB = sc.nextInt();
-        System.out.println("탕수육의 소 금액 : ");
-        int tangC = sc.nextInt();
-        market();
+        market(bok, jja,tangB,tangM,tangS);
 
       } else if (num == 3) {
 
@@ -132,69 +133,121 @@ public class main221102_test {
     return 0;
   }
 
-  public static int marketAdd() {
-    return 0;
-  }
-  public static int market(int bok, int jja, int tangA, int tangB, int tangC) {
-
-
-
+  public static int market(int bok, int jja, int tangB, int tangM, int tangS) {
     Scanner sc = new Scanner(System.in);
 
     int sum = 0;
+    int c = 0;
+    while (true) f1:{
 
-
-
-    while (true) {
       System.out.println("1.볶음밥 2.자장면 3.탕수육[소`중`대 따로] 4.종료");
       int num = sc.nextInt();
 
-      while (true) {
+
+      while (c == 0) {
 
         if (num == 1) {
           sum = sum + bok;
           System.out.println("금액은" + sum + "입니다.");
-          break;
+          break f1;
+
         } else if (num == 2) {
           sum = sum + jja;
           System.out.println("금액은" + sum + "입니다.");
-          break;
+          break f1;
+
+
         } else if (num == 3) {
-          System.out.println("1.대[100원] 2.중[50원] 3.소[300원] 4.이전 메뉴");
+          System.out.println("1.대["+tangB+"원] 2.중["+tangM+"원] 3.소["+tangS+"원] 4.이전 메뉴");
           int numN = sc.nextInt();
 
           if (numN == 1) {
-            sum = sum + tangA;
-            System.out.println("금액은" + sum + "입니다.");
-            break;
-          }
-          if (numN == 2) {
             sum = sum + tangB;
             System.out.println("금액은" + sum + "입니다.");
-            break;
+
+          }
+          if (numN == 2) {
+            sum = sum + tangM;
+            System.out.println("금액은" + sum + "입니다.");
+
           }
           if (numN == 3) {
-            sum = sum + tangC;
+            sum = sum + tangS;
             System.out.println("금액은" + sum + "입니다.");
-            break;
+
           }
           if (numN == 4) {
-            market();
-            break;
+            market(bok, jja, tangB, tangM, tangS);
           }
 
         } else if (num == 4) {
           System.out.println("종료");
           break;
         }
+        break;
 
       }
-      return 0;
+      return sum;
     }
 
   }
 
+//  public static int menuSelect() {
+//  Scanner sc = new Scanner(System.in);
+//
+//  while (true) {
+//    System.out.println("1.볶음밥 2.자장면 3.탕수육[소`중`대 따로] 4.종료");
+//    int num = sc.nextInt();2
+//    market(bok,jja,tangB, tangM, tangS);
+//
+//    if(num == 4) {
+//      break;
+//    }
+//
+//  }
+//
+//    return 0;
+//  }
+//
   public static int cal() {
+  Scanner sc = new Scanner(System.in);
+    System.out.println("1.덧셈 \n 2.뺄셈\n3.입력");
+    int culNum = sc.nextInt();
+    int three = 0;
+    if(three == 0) {
+      System.out.println("첫 번째 숫자를 입력하시오");
+      int one = sc.nextInt();
+      System.out.println("두 번째 숫자를 입력하시오");
+      int two = sc.nextInt();
+
+      if (culNum == 1) {
+        three = one + two;
+        System.out.println(one + "+" + two + " = " + three);
+      } else if (culNum == 2) {
+        three = one - two;
+        if (two > one) {
+          System.out.println("두번째 수가 더 클수는 없습니다.");
+          two = sc.nextInt();
+        }
+        System.out.println(one + "-" + two + " = " + three);
+      }
+    }
+    else if (three !=0 ) {
+      System.out.println("입력 = "+three);
+      System.out.println("1.덧셈\n 2.뺄셈");
+
+    }
+    return three;
+  }
+
+  public static int error(int n) {
+    if(n!=1||n!=2||n!=3||n!=4){
+      System.out.println("잘못 입력하셨습니다.");
+    }
+
+    return 0;
+  }
+  public static int price() {
 
     return 0;
   }
