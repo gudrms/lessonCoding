@@ -89,31 +89,34 @@ public class main221102_test {
 
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
-
+    int three = 0;
+    int seq = 0;
     int bok, jja, tangB, tangM,tangS;
-    System.out.println("볶음밥의 금액 : ");
-    bok = sc.nextInt();
-    System.out.println("자장면의 금액 : ");
-    jja = sc.nextInt();
-    System.out.println("탕수육의 대 금액 : ");
-    tangB = sc.nextInt();
-    System.out.println("탕수육의 중 금액 : ");
-    tangM = sc.nextInt();
-    System.out.println("탕수육의 소 금액 : ");
-    tangS = sc.nextInt();
 
+    int a = 0 ;
 
     while (true) {
       System.out.println("1.구구단 2.음식점 3.계산기 4.종료");
       int num = sc.nextInt();
       if (num == 1) {
         gugu();
-
       } else if (num == 2) {
-        market(bok, jja,tangB,tangM,tangS);
-
+        if(a == 0){
+          System.out.println("볶음밥의 금액 : ");
+          bok = sc.nextInt();
+          System.out.println("자장면의 금액 : ");
+          jja = sc.nextInt();
+          System.out.println("탕수육의 대 금액 : ");
+          tangB = sc.nextInt();
+          System.out.println("탕수육의 중 금액 : ");
+          tangM = sc.nextInt();
+          System.out.println("탕수육의 소 금액 : ");
+          tangS = sc.nextInt();
+          a++;
+        }
+        market();
       } else if (num == 3) {
-
+        cal(seq, three);
       } else if (num == 4) {
         System.out.println("종료 됩니다.");
         break;
@@ -133,11 +136,45 @@ public class main221102_test {
     return 0;
   }
 
-  public static int market(int bok, int jja, int tangB, int tangM, int tangS) {
+  public static int market() {
     Scanner sc = new Scanner(System.in);
 
     int sum = 0;
     int c = 0;
+    int a = 0;
+    int bok = 0;
+    int jja = 0;
+    int tangB =0;
+    int tangM =0;
+    int tangS = 0;
+    System.out.println("a = " + a);
+    a++;
+    if (a==1){
+      System.out.println("a = " + a);
+
+      System.out.println("볶음밥의 금액 : ");
+      bok = sc.nextInt();
+      System.out.println("자장면의 금액 : ");
+      jja = sc.nextInt();
+      System.out.println("탕수육의 대 금액 : ");
+      tangB = sc.nextInt();
+      System.out.println("탕수육의 중 금액 : ");
+      tangM = sc.nextInt();
+      System.out.println("탕수육의 소 금액 : ");
+      tangS = sc.nextInt();
+      a++;
+      System.out.println("a = " + a);
+
+    }
+    a++;
+    System.out.println("a = " + a);
+
+
+
+
+
+
+
     while (true) f1:{
 
       System.out.println("1.볶음밥 2.자장면 3.탕수육[소`중`대 따로] 4.종료");
@@ -160,25 +197,25 @@ public class main221102_test {
         } else if (num == 3) {
           System.out.println("1.대["+tangB+"원] 2.중["+tangM+"원] 3.소["+tangS+"원] 4.이전 메뉴");
           int numN = sc.nextInt();
+            if (numN == 1) {
+              sum = sum + tangB;
+              System.out.println("금액은" + sum + "입니다.");
+              return num;
+            }
+            if (numN == 2) {
+              sum = sum + tangM;
+              System.out.println("금액은" + sum + "입니다.");
 
-          if (numN == 1) {
-            sum = sum + tangB;
-            System.out.println("금액은" + sum + "입니다.");
+            }
+            if (numN == 3) {
+              sum = sum + tangS;
+              System.out.println("금액은" + sum + "입니다.");
 
-          }
-          if (numN == 2) {
-            sum = sum + tangM;
-            System.out.println("금액은" + sum + "입니다.");
+            }
+            if (numN == 4) {
+              market();
+            }
 
-          }
-          if (numN == 3) {
-            sum = sum + tangS;
-            System.out.println("금액은" + sum + "입니다.");
-
-          }
-          if (numN == 4) {
-            market(bok, jja, tangB, tangM, tangS);
-          }
 
         } else if (num == 4) {
           System.out.println("종료");
@@ -209,33 +246,89 @@ public class main221102_test {
 //    return 0;
 //  }
 //
-  public static int cal() {
+  public static int cal(int seq, int three) {
   Scanner sc = new Scanner(System.in);
-    System.out.println("1.덧셈 \n 2.뺄셈\n3.입력");
+    System.out.println("1.덧셈 \n2.뺄셈\n3.입력");
     int culNum = sc.nextInt();
-    int three = 0;
-    if(three == 0) {
+    int two;
+    int one;
+seq++;
+    if(seq == 1) {
+      seq++;
       System.out.println("첫 번째 숫자를 입력하시오");
-      int one = sc.nextInt();
+      one = sc.nextInt();
       System.out.println("두 번째 숫자를 입력하시오");
-      int two = sc.nextInt();
+      two = sc.nextInt();
 
       if (culNum == 1) {
         three = one + two;
         System.out.println(one + "+" + two + " = " + three);
-      } else if (culNum == 2) {
-        three = one - two;
+        seq++;
+        System.out.println(" test4");
+        System.out.println("seq="+seq);
+
+      }
+
+      else if (culNum == 2) {
+
         if (two > one) {
           System.out.println("두번째 수가 더 클수는 없습니다.");
+          System.out.println("두번째 수를 입력하세요.");
           two = sc.nextInt();
         }
+        three = one - two;
         System.out.println(one + "-" + two + " = " + three);
-      }
-    }
-    else if (three !=0 ) {
-      System.out.println("입력 = "+three);
-      System.out.println("1.덧셈\n 2.뺄셈");
+        seq++;
+        System.out.println(" test1");
+        System.out.println("seq="+seq);
 
+
+
+      }
+      seq++;
+      System.out.println(" test2");
+      System.out.println("seq="+seq);
+      return seq;
+    }
+
+
+    else if(seq > 1){
+      System.out.println(" test3");
+      System.out.println("seq="+seq);
+      System.out.println("1.덧셈\n 2.뺄셈");
+      culNum = sc.nextInt();
+
+      if(culNum == 1){
+        System.out.println("첫번째 수 = "+three);
+        one = three;
+        System.out.println("두번째 수를 입력하시오= ");
+        two = sc.nextInt();
+        three = one + two;
+        System.out.println(one + "+" + two + " = " + three);
+        seq++;
+        System.out.println(" test4");
+        System.out.println("seq="+seq);
+
+        return seq;
+      }else if(culNum == 2){
+        System.out.println("첫번째 수 = "+three);
+        one = three;
+        System.out.println("두번째 수를 입력하시오= ");
+        two = sc.nextInt();
+
+        if (two > one) {
+          System.out.println("두번째 수가 더 클수는 없습니다.");
+          System.out.println("두번째 수를 입력하세요.");
+          two = sc.nextInt();
+        }
+        three = one - two;
+        System.out.println(one + "-" + two + " = " + three);
+        seq++;
+        System.out.println(" test1");
+        System.out.println("seq="+seq);
+      }
+
+      System.out.println("첫번째 수 = "+three);
     }
     return three;
   }
