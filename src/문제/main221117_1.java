@@ -110,7 +110,15 @@ public class main221117_1 {
                 System.out.println("처음수가 두번째수보다 작을수 없습니다.");
                 System.out.println("기존 첫 번째 수는"+addOne+"입니다.");
                 System.out.println("두 번째 수를 입력하시오.");
+
                 addTwo = sc.nextInt();
+
+                while(addOne<addTwo) {
+                  System.out.println("처음수가 두번째수보다 작을수 없습니다.");
+                  System.out.println("기존 첫 번째 수는"+addOne+"입니다.");
+                  System.out.println("두 번째 수를 입력하시오.");
+                  addTwo = sc.nextInt();
+                }
               }
               total = addOne-addTwo;
               System.out.println("두 수의 차는 "+total+"입니다.");
