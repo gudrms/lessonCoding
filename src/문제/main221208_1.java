@@ -42,7 +42,7 @@ public class main221208_1 {
             System.out.println(firstGamer + "님, " + secondGamer + "님 반갑습니다");
 
             System.out.println(firstGamer + "님 부터 시작합니다.");
-
+//힌트3
             for (int j = 1; j < 999; j++) {
                 System.out.println(j + "번째 턴 입니다");
                 if (j % 8 == 0) {
@@ -52,12 +52,27 @@ public class main221208_1 {
                         sumDigit = sumDigit / 10;
                         digit += sD[i];
                         if (sumDigit <= 0) {
+                            System.out.println("sum = " + sum);
                             System.out.println(" 각자리수의 합은 = " + digit);
+
                             break;
                         }
                     }
 
                 }
+                int sssum = sum;
+
+                int ccount = 1;
+                if (j%10 == 0) {
+                    if (sssum/10 > 10) {
+                        sssum = sssum/10;
+                        ccount++;
+                    }
+                    System.out.println("sum = " + sum);
+                    System.out.println("정답의 자릿수는 "+ccount+"자릿수 입니다");
+                }
+
+//규칙2
                 if (count > 0) {
 //힌트1
                     System.out.println("sum = " + sum);
@@ -94,6 +109,7 @@ public class main221208_1 {
                 }
                 System.out.print(firstGamer + "님이 입력할 번호 : ");
                 n1[j] = sc.nextInt();
+  // 규칙1
                 if (n1[j] == sum) {
 
                     if (j % 5 == 0 || j % 7 == 0) {
@@ -115,7 +131,7 @@ public class main221208_1 {
 
 
                     }
-
+//1번 게이머
                 } else if (n1[j] != sum) {
                     if (n1[j] <= sum) {
                         System.out.println("정답이 " + firstGamer + "님이 입력하신 숫자보다 큽니다.!");
@@ -123,7 +139,7 @@ public class main221208_1 {
                     } else if (n1[j] >= sum) {
                         System.out.println("정답이 " + firstGamer + "님이 입력하신 숫자보다 작습니다.!");
                     }
-                    if (count > 0) {
+                    if (n1answerCount > 0) {
                         j -= 3;
                         if (measure == 1) {
                             sum += 100;
@@ -132,6 +148,7 @@ public class main221208_1 {
                         } else if (measure == 5) {
                             sum += 1700;
                         }
+
                         if (measure < 3) {
                             j++;
                         }
@@ -139,13 +156,16 @@ public class main221208_1 {
                             j += 3;
                         }
                         if (sum >= 2000) {
-                            j -= 9;
+                            j += 9;
+                        }
+                        if (sum < 2000) {
+                            j-=9;
                         }
                     }
 
                 }
 
-
+//2번 게이머
                 System.out.print(secondGamer + "님이 입력할 번호 : ");
                 n2[j] = sc.nextInt();
 
