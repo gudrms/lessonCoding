@@ -1,9 +1,8 @@
 package 문제;
 
 import java.util.Scanner;
+/*
 
-public class main221208_1 {
-    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
         int sum = 0;
@@ -186,7 +185,189 @@ public class main221208_1 {
         }
 
 
+
+        int a=2;
+
+        switch (a){
+            case 1:{
+                System.out.println("a에 1이 들어있습니다.");
+                break;
+            }
+            case 2:{
+                System.out.println("a에 1이 들어있습니다.");
+                break;
+            }
+            case 3:{
+                System.out.println("a에 1이 들어있습니다.");
+                break;
+            }
+        }
+
+
+
+        int month = 8;
+        String monthString = "";
+        switch (month) {
+            case 1:  monthString = "January";
+                break;
+            case 2:  monthString = "February";
+                break;
+            case 3:  monthString = "March";
+                break;
+            case 4:  monthString = "April";
+                break;
+            case 5:  monthString = "May";
+                break;
+            case 6:  monthString = "June";
+                break;
+            case 7:  monthString = "July";
+                break;
+            case 8:  monthString = "August";
+                break;
+            case 9:  monthString = "September";
+                break;
+            case 10: monthString = "October";
+                break;
+            case 11: monthString = "November";
+                break;
+            case 12: monthString = "December";
+                break;
+            default: monthString = "Invalid month";
+                break;
+        }
+        System.out.println(monthString);
+
+
+
+
+
+
+ */
+public class main221208_1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int customer=0;
+        int menu1C = 5000;
+        int menu2C = 10000;
+        int menu3C = 3000;
+        int menu4C = 0;
+
+        String menu1N = "장어덮밥";
+        String menu2N = "옥수수콘";
+        String menu3N = "감자튀김";
+
+
+        int menu1 = 0;
+        int menu2 = 0;
+        int menu3 = 0;
+        int sum = 0;
+        int menu;
+
+        int con = 1;
+
+
+        while (true) {
+            customer++;
+            con = 1;
+            System.out.println(customer+"번째 손님입니다.");
+            while (con == 1) {
+                switch (con){
+                    case 1 :
+                    case 2 : break;
+                }
+
+                System.out.println("1."+ menu1N+menu1C+ " 2."+menu2N+menu2C+ " 3. "+menu3N+menu3C+" 4. 총가격");
+                System.out.println("선택할 번호 : ");
+
+                menu = sc.nextInt();
+
+                switch (menu) {
+
+                    case 1:
+                        System.out.println("1번 "+menu1N+"을 선택하셨습니다.");
+                        menu1++;
+                        sum+=menu1C;
+                        if (menu1>menu2 && menu1>menu3) {
+                            System.out.println("장어덮밥을 많이 주문하셨기에 옥수수콘과 감자튀김은 1개씩 무료로 드립니다.");
+                        }
+                        break;
+                    case 2:
+                        menu2++;
+                        System.out.println("2번"+menu2N+"을 선택하셨습니다.");
+                        sum+=menu2C;
+                        if(menu2>menu3 && menu2>menu1) {
+                            System.out.println("옥수수콘을 많이 주문하셨기에 감자튀김은 1개씩 무료로 드립니다.");
+                        }
+                        break;
+
+
+                    case 3:
+                        menu3++;
+                        System.out.println("3번"+menu3N+"을 선택하셨습니다.");
+                        sum+=menu3C;
+
+                        if (menu3>menu2 && menu3>menu1) {
+                            System.out.println("감자튀김을 많이 주문하셨기에 서비스는 없습니다.");
+                        }
+                        break;
+
+                    case 4:
+                        System.out.println("감사합니다 총 가격은"+sum+"입니다");
+                        System.out.println("계속 구매하시려면 1번 아니면 2번을 눌러주세요");
+                        con = sc.nextInt();
+                        switch (con) {
+                            case 1:
+                                System.out.println("계속진행합니다");;
+                            case 2: break;
+                        }
+                        break;
+
+                }
+
+            }
+
+
+        }
     }
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
