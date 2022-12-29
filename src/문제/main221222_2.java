@@ -32,6 +32,7 @@ public class main221222_2 {
     int aCnt = 0;
     int accountInsert =0;
     int accountMinus =0;
+    int answer = 0;
 
 
     System.out.println("나이를 입력하세요");
@@ -48,13 +49,21 @@ public class main221222_2 {
 
 
 
-    while (chance > 0) {
+    while (chance > 0 || answer ==0) {
       System.out.println("반갑습니다 ");
       System.out.println("주민번호를 입력하세요");
       int SocialSecurityNumberA = sc.nextInt();
 
 
-      if (SocialSecurityNumber == SocialSecurityNumberA) {
+
+      if (SocialSecurityNumberA < 100000 && cnt == 0) {
+        System.out.println("주민번호가 6자리보다 작습니다.");
+        chance += 3;
+        cnt = 1;
+        chance--;
+        System.out.println("chance = " + chance);
+      }
+      else if (SocialSecurityNumber == SocialSecurityNumberA || answer ==1) {
         System.out.println("카드 비밀번호를 입력하세요");
        int cardPasswordA = sc.nextInt();
        chance--;
@@ -67,7 +76,7 @@ public class main221222_2 {
             case 1 :
               System.out.println("계좌조회\n 계좌금액입니다 "+account);
               aCnt = 1;
-              break;
+
             case 2 :
               if (aCnt == 0) {
                 System.out.println("처음에는 계좌 조회만 할 수 있습니다.");
@@ -78,7 +87,7 @@ public class main221222_2 {
                 account+=accountInsert;
                 System.out.println("잔액은 "+account);
               }
-              break;
+
 
             case  3:
               if (aCnt == 0) {
@@ -95,7 +104,7 @@ public class main221222_2 {
                   System.out.println("잔액은 " + account);
                 }
               }
-              break;
+
 
           }
         }
@@ -104,6 +113,7 @@ public class main221222_2 {
           pCnt=1;
         }
         else if(cardPasswordA != cardPassword ) {
+          System.out.println("비밀번호가 틀렸습니다");
           chance--;
         }
 
@@ -127,15 +137,21 @@ public class main221222_2 {
           if (SocialSecurityNumberA < 100000) {
             chance++;
             System.out.println("chance = " + chance);
-          } else {
-            chance++;
-            System.out.println("chance = " + chance);
           }
+          else if(SocialSecurityNumberA == SocialSecurityNumber) {
+
+            System.out.println("chance = " + chance);
+            answer = 1;
+          }
+          else if(SocialSecurityNumberA > 100000) {
+            chance+=2;
+            System.out.println("chance = " + chance);
         }
       }
 
 
     }
+  }
     System.out.println("종료되었습니다");
   }
 }
