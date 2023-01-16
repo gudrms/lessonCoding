@@ -40,7 +40,10 @@ public class main230112_1 {
     int sum = 0;
     int num = 0;
     int inNum = 0;
-    int tt=0;
+    int tt = 0;
+    int chance = 5;
+    int j = 0;
+
 
     System.out.println("몇 개의 수를 받으시겠습니까? ");
     num = sc.nextInt();
@@ -49,22 +52,43 @@ public class main230112_1 {
     int tmp = 0;
 
 
-    for (int i = 0; i < num; i++) {
-        System.out.println("입력 : ");
-        inNum = sc.nextInt();
-        in[i] = inNum;
-        sum+=inNum;
-    }
-    System.out.println("test");
-    tmp = in[0];
-    for (int i = num-1; i >= 1; i--) {
-      System.out.println(in[i]);
-    }
-    in[num-1] = tmp;
+    while (chance > 0) {
 
-    for (int i = 0; i < num-1; i++) {
-      System.out.println(in[i]);
+
+      if (count < 3) {
+        for (int i = 0; i < num; i++) {
+          System.out.println("입력 : ");
+          inNum = sc.nextInt();
+          in[i] = inNum;
+
+          sum += inNum;
+        }
+
+        tmp = in[0];
+        for (int i = num - 1; i >= 0; i--) {
+          System.out.println(in[i]);
+          if (in[i] == 7) {
+            count++;
+            trun[j] = i;
+            j++;
+          }
+        }
+        in[num - 1] = tmp;
+
+        if (count < 3) {
+          System.out.println("7이 총 3번 이상 입력받지 않았다면, 7을 입력을 더 받아야 합니다.");
+          System.out.println("기회가 " + chance + " 번 남았습니다");
+          chance--;
+          count=0;
+        }
+        else {
+          System.out.println("합은 " + sum);
+          System.out.println("7은 총 " + count + "만큼 나왔습니다.");
+          System.out.println("7이 나온 값만큼 더한 숫자는 " + count * 7 + " 입니다.");
+          System.out.println(" 7이 들어있는 index 중에서 중간에 위치한 index는 ?번 입니다.");
+        }
+      }
     }
-    System.out.println("합은 "+ sum);
+
   }
 }
